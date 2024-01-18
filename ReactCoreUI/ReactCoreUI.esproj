@@ -1,12 +1,14 @@
 ﻿<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.128-alpha">
   <PropertyGroup>
-    <StartupCommand>yarn start</StartupCommand>
+    <StartupCommand>npm run start:dev</StartupCommand>
     <JavaScriptTestRoot>src\</JavaScriptTestRoot>
     <!-- Allows the build (or compile) script located on package.json to run on Build -->
     <ShouldRunBuildScript>false</ShouldRunBuildScript>
     <!-- Folder where production build objects will be placed -->
     <PublishAssetsDirectory>$(MSBuildProjectDirectory)\dist</PublishAssetsDirectory>
-    <CleanCommand>yarn rimraf ./build</CleanCommand>
-    <BuildCommand>yarn react-scripts build</BuildCommand>
+    <CleanCommand>npm run clean</CleanCommand>
+    <BuildCommand>npm install --legacy-peer-deps &amp;&amp; npm run build</BuildCommand>
+    <PackageJsonDirectory>
+    </PackageJsonDirectory>
   </PropertyGroup>
 </Project>

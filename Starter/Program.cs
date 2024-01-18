@@ -1,8 +1,8 @@
 using Starter.Data;
 using Starter.Models;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
+//using Microsoft.AspNetCore.Identity;
+//using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -59,5 +59,13 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.MapFallbackToFile("index.html"); ;
+
+app.UseCors(configurePolicy =>
+{
+    //configurePolicy.AllowAnyOrigin();
+    //configurePolicy.AllowAnyHeader();
+    //configurePolicy.AllowAnyMethod();
+    //configurePolicy.AllowCredentials();
+});
 
 app.Run();
