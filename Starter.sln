@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Starter", "Starter\Starter.csproj", "{FC655E3B-8D3D-4357-B439-CE50EC69CD7A}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ReactCoreUI", "ReactCoreUI\ReactCoreUI.esproj", "{8DBF491B-AE5E-480B-82A5-D42AE1B6EBB2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FC655E3B-8D3D-4357-B439-CE50EC69CD7A} = {FC655E3B-8D3D-4357-B439-CE50EC69CD7A}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
