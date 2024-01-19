@@ -63,7 +63,7 @@ const Validation = React.lazy(() =>
     import("./views/forms/validation/Validation")
 );
 
-const Charts = React.lazy(() => import("./views/charts/Charts"));
+const Corecharts = React.lazy(() => import("./views/corecharts/Corecharts"));
 
 // Icons
 const CoreUIIcons = React.lazy(() =>
@@ -112,7 +112,7 @@ const routes = [
         name: "Button Groups",
         element: ButtonGroups,
     },
-    { path: "/dashboard/charts", name: "Charts", element: Charts },
+    { path: "/dashboard/corecharts", name: "Corecharts", element: Corecharts },
     { path: "/dashboard/forms", name: "Forms", element: FormControl, exact: true },
     { path: "/dashboard/forms/form-control", name: "Form Control", element: FormControl },
     { path: "/dashboard/forms/select", name: "Select", element: Select },

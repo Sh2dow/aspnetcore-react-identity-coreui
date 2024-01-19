@@ -10,7 +10,7 @@ import {
 } from '@coreui/react-chartjs'
 import { DocsCallout } from 'src/components'
 
-const Charts = () => {
+const Corecharts = () => {
   const random = () => Math.round(Math.random() * 100)
 
   return (
@@ -173,4 +173,4 @@ const Charts = () => {
   )
 }
 
-export default Charts
+export default Corecharts

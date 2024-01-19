@@ -1,41 +1,48 @@
 {
+  "profiles": {
+    "Starter": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        //"ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
+      },
+      "applicationUrl": "https://localhost:7225;http://localhost:5028"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        //"ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "environmentVariables": {
+        "ASPNETCORE_URLS": "https://+;http://+"
+      },
+      "httpPort": 8000,
+      "DockerfileRunArguments": "-e ASPNETCORE_HTTPS_PORT=8225 -e ASPNETCORE_Kestrel__Certificates__Default__Password=\"crypticpassword\" -e ASPNETCORE_Kestrel__Certificates__Default__Path=\\https\\aspnetapp.pfx -v C:\\Users\\Administrator\\.aspnet\\https:C:\\https\\ --user ContainerAdministrator",
+      "sslPort": 8225,
+      "useSSL": true
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "launchUrl": "https://localhost:7225",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        //"ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy",
+        "ASPNETCORE_URLS": "https://localhost:7225;http://localhost:5028"
+      },
+      "distributionName": ""
+    }
+  },
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "http://localhost:7604",
       "sslPort": 44347
-    }
-  },
-  "profiles": {
-    "Starter": {
-      "commandName": "Project",
-      "launchBrowser": false,
-      "applicationUrl": "https://localhost:7225;http://localhost:5028",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
-      }
-    },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": false,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
-      }
-    },
-    "Docker": {
-      "commandName": "Docker",
-      "launchBrowser": false,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
-      "httpPort": 8000,
-      "DockerfileRunArguments": "-e ASPNETCORE_HTTPS_PORT=8225 -e ASPNETCORE_Kestrel__Certificates__Default__Password=\"crypticpassword\" -e ASPNETCORE_Kestrel__Certificates__Default__Path=\\https\\aspnetapp.pfx -v C:\\Users\\Administrator\\.aspnet\\https:C:\\https\\ --user ContainerAdministrator",
-      "environmentVariables": {
-        "ASPNETCORE_URLS": "https://+;http://+"
-      },
-      "sslPort": 8225,
-      "useSSL": true
     }
   }
 }
