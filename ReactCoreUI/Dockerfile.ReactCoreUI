@@ -1,0 +1,38 @@
+FROM mcr.microsoft.com/windows/servercore:ltsc2022 as installer
+
+SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop';$ProgressPreference='silentlyContinue';"]
+
+RUN Invoke-WebRequest -OutFile nodejs.zip -UseBasicParsing "https://nodejs.org/dist/v20.10.0/node-v20.10.0-win-x64.zip"; Expand-Archive nodejs.zip -DestinationPath C:\; Rename-Item "C:\\node-v20.10.0-win-x64" c:\nodejs
+
+FROM mcr.microsoft.com/windows/nanoserver:ltsc2022
+
+WORKDIR C:\\nodejs
+COPY --from=installer C:\\nodejs\\ C:\\Windows\\system32
+RUN SETX PATH C:\nodejs
+RUN npm config set registry https://registry.npmjs.org/
+RUN npm --version
+
+WORKDIR /app
+
+# add `/app/node_modules/.bin` to $PATH
+# ENV PATH /app/node_modules/.bin:$PATH
+RUN SETX PATH C:\app\node_modules\.bin
+
+# Install project dependencies
+COPY ReactCoreUI/package.json .
+COPY ReactCoreUI/package-lock.json ./
+RUN npm install --legacy-peer-deps
+
+# Build the ReactCoreUI application
+RUN npm run build
+
+# Use the official Nginx image for Windows
+FROM mcr.microsoft.com/windows/nanoserver:ltsc2022 AS final
+WORKDIR /nginx
+COPY --from=build /app/build /nginx
+
+# Expose the port on which ReactCoreUI will run
+EXPOSE 3000
+
+# Start Nginx and serve the ReactCoreUI application
+CMD ["nginx", "-g", "daemon off;"]

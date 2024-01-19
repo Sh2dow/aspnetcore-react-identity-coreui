@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  starter:
+    build:
+      context: ./Starter/
+      dockerfile: Dockerfile.Starter
+    ports:
+      - "8000:8225"
+
+  reactcoreui:
+    build:
+      context: .
+      dockerfile: ReactCoreUI/Dockerfile.ReactCoreUI
+    ports:
+      - "44482:44482"
